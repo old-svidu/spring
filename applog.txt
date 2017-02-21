@@ -1,0 +1,63 @@
+TRACE   2017-02-21 16:40:58,235 [main] utils.Log  - com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl@75828a0f
+TRACE   2017-02-21 16:40:58,296 [main] utils.Log  - com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl@38cccef
+TRACE   2017-02-21 16:40:58,318 [main] utils.Log  - com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl@2a098129
+TRACE   2017-02-21 16:40:58,352 [main] utils.Log  - com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl@6c629d6e
+ERROR   2017-02-21 16:44:12,810 [main] utils.Log  - javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: /home/sa/Projects/MProj/lists.Moneys.xml (No such file or directory)]
+ERROR   2017-02-21 16:46:20,882 [main] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "user_pkey"
+  Detail: Key (login)=(aaa) already exists.
+ERROR   2017-02-21 16:46:20,890 [main] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "user_pkey"
+  Detail: Key (login)=(ccc) already exists.
+ERROR   2017-02-21 17:16:25,935 [Thread-3] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:21:33,637 [Thread-3] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:23:17,631 [Thread-0] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "user_pkey"
+  Detail: Key (login)=(aaa) already exists.
+ERROR   2017-02-21 17:24:14,191 [Thread-2] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:25:03,639 [Thread-3] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:30:28,518 [Thread-4] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:33:23,766 [Thread-4] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:34:55,369 [Thread-1] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:35:49,153 [Thread-1] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:43:44,525 [Thread-0] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:45:19,792 [Thread-0] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:47:06,947 [Thread-0] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:48:51,408 [Thread-1] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 17:49:30,221 [Thread-1] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 17:54:43,477 [Thread-1] utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-21 17:56:19,347 [Thread-1] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 17:58:30,895 [Thread-1] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:14:20,211 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:15:10,008 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:17:36,721 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:18:22,081 [Thread-3] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:18:48,256 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:20:04,929 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:20:10,479 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:20:26,415 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:20:30,261 [Thread-3] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:28:28,739 [Thread-3] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:32:45,998 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:33:23,776 [Thread-3] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:34:12,319 [Thread-3] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:34:51,737 [Thread-3] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-21 18:42:10,925 [Thread-4] utils.Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
+  Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
