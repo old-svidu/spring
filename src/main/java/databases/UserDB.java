@@ -45,7 +45,7 @@ public class UserDB {
             PreparedStatement ps = conn.prepareStatement(sql);
 
             for (User user : users.getList()) {
-                if (Sets.userSet.contains(user)) {
+                if (Sets.loginsSet.contains(user.getLogin())) {
                     if (Sets.moneySet.contains(Money.moneyToStr(user.getMoney()))) {
                         continue;
                     } else {
@@ -67,7 +67,6 @@ public class UserDB {
                     MoneyDB.insert(user.getMoney());
                 }
 
-                Sets.userSet.add(user);
                 Sets.loginsSet.add(user.getLogin());
             }
         } catch (SQLException e) {

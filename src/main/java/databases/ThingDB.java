@@ -17,23 +17,23 @@ public class ThingDB {
 
     public static void insert(Object obj) {
         Things things = (Things) obj;
-        try{
+        try {
             Connection conn = Conn.getInstance();
             String sql = "INSERT INTO main.thing (login,thing,price,tdate,priority) values(?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            for (Thing thing : things.getList() ) {
-                synchronized (Sets.loginsSet) {
-                    while (!Sets.loginsSet.contains(thing.getLogin())){
-                        Thread.yield();
-                    }
-                    ps.setString(1, thing.getLogin());
-                    ps.setString(2, thing.getThing());
-                    ps.setInt(3, thing.getPrice());
-                    ps.setDate(4, new Date(thing.getTdate().getTime()));
-                    ps.setInt(5, thing.getPrior());
-                    ps.executeUpdate();
+            for (Thing thing : things.getList()) {
+
+                while (!Sets.loginsSet.contains(thing.getLogin())) {
+                    Thread.yield();
                 }
+                ps.setString(1, thing.getLogin());
+                ps.setString(2, thing.getThing());
+                ps.setInt(3, thing.getPrice());
+                ps.setDate(4, new Date(thing.getTdate().getTime()));
+                ps.setInt(5, thing.getPrior());
+                ps.executeUpdate();
             }
+
         } catch (SQLException e) {
             Log.logger.error(e);
         }

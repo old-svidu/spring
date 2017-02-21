@@ -118,6 +118,11 @@ public class User implements Serializable {
         this.money = moneys;
     }
 
+
+    public static String userToStr(User user){
+       return user.getLogin();
+    }
+
     @Override
     public int hashCode() {
         return login.hashCode()*21;

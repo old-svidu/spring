@@ -22,17 +22,17 @@ public class ReportDB {
             String sql = "INSERT INTO main.reports (thing, login, status,avg) VALUES(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             for (Report report : reports.getList()) {
-                synchronized (Sets.loginsSet) {
-                    while (!Sets.loginsSet.contains(report.getLogin())) {
-                        Thread.yield();
-                    }
-                    ps.setString(2, report.getLogin());
-                    ps.setString(1, report.getThing());
-                    ps.setString(3, report.getStatus());
-                    ps.setInt(4, report.getAvg());
-                    ps.executeUpdate();
+
+                while (!Sets.loginsSet.contains(report.getLogin())) {
+                    Thread.yield();
                 }
+                ps.setString(2, report.getLogin());
+                ps.setString(1, report.getThing());
+                ps.setString(3, report.getStatus());
+                ps.setInt(4, report.getAvg());
+                ps.executeUpdate();
             }
+
         } catch (SQLException e) {
             Log.logger.error(e);
         }
@@ -44,10 +44,10 @@ public class ReportDB {
             Connection conn = Conn.getInstance();
             String sql = "INSERT INTO main.reports (login,thing,status,avg) VALUES(?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,report.getLogin());
+            ps.setString(1, report.getLogin());
             ps.setString(2, report.getThing());
-            ps.setString(3,report.getStatus());
-            ps.setInt(4,report.getAvg());
+            ps.setString(3, report.getStatus());
+            ps.setInt(4, report.getAvg());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class ReportDB {
                 String status = rs.getString("status");
                 int avg = rs.getInt("avg");
 
-                Report report = new Report(id,login,thing,status,avg);
+                Report report = new Report(id, login, thing, status, avg);
                 list.add(report);
             }
 
