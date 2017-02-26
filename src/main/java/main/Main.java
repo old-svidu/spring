@@ -1,11 +1,7 @@
 package main;
 
 
-import databases.*;
-
-import utils.*;
-
-
+import common.utils.UpDo;
 
 
 /**
@@ -14,8 +10,9 @@ import utils.*;
 public class Main {
 
     public static void main(String[] args) {
-        UserDB.deleteAll();
-        UpDo.upload();
+//        UserDao.deleteAll();
+//        UpDo.upload();
+        UpDo.download();
     }
 }
 

@@ -1,8 +1,5 @@
 package main;
 
-import tables.Money;
-import tables.User;
-
 import java.util.HashSet;
 
 /**
