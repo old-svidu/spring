@@ -61,3 +61,27 @@ ERROR   2017-02-21 18:34:51,737 [Thread-3] Log  - org.postgresql.util.PSQLExcept
   Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
 ERROR   2017-02-21 18:42:10,925 [Thread-4] Log  - org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "money_pkey"
   Detail: Key (login, mdate)=(aaa, 1970-05-09) already exists.
+ERROR   2017-02-27 17:03:01,978 [Thread-1] common.utils.Log  - javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: /home/sa/Projects/MProj/models.lists.Things.xml (No such file or directory)]
+ERROR   2017-02-27 17:03:01,978 [Thread-0] common.utils.Log  - javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: /home/sa/Projects/MProj/models.lists.Users.xml (No such file or directory)]
+ERROR   2017-02-27 17:03:01,978 [Thread-2] common.utils.Log  - javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: /home/sa/Projects/MProj/models.lists.Reports.xml (No such file or directory)]
+ERROR   2017-02-27 17:03:01,978 [Thread-3] common.utils.Log  - javax.xml.bind.UnmarshalException
+ - with linked exception:
+[java.io.FileNotFoundException: /home/sa/Projects/MProj/models.lists.Moneys.xml (No such file or directory)]
+ERROR   2017-02-27 17:03:02,351 [Thread-0] common.utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-27 17:03:02,351 [Thread-2] common.utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-27 17:03:02,352 [Thread-3] common.utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-27 17:03:02,352 [Thread-1] common.utils.Log  - java.lang.reflect.InvocationTargetException
+ERROR   2017-02-27 17:04:27,165 [Thread-0] common.utils.Log  - java.lang.NoSuchMethodException: models.lists.Users.selectAllReports()
+ERROR   2017-02-27 17:04:27,166 [Thread-1] common.utils.Log  - java.lang.NoSuchMethodException: models.lists.Things.selectAllReports()
+ERROR   2017-02-27 17:04:27,165 [Thread-2] common.utils.Log  - java.lang.NoSuchMethodException: models.lists.Reports.selectAllReports()
+ERROR   2017-02-27 17:04:27,165 [Thread-3] common.utils.Log  - java.lang.NoSuchMethodException: models.lists.Moneys.selectAllReports()
+ERROR   2017-02-27 17:08:34,197 [Thread-1] models.dao.ThingDao  - org.postgresql.util.PSQLException: The column name tid was not found in this ResultSet.
+ERROR   2017-02-27 17:08:34,221 [Thread-3] common.utils.Log  - org.postgresql.util.PSQLException: The column name note was not found in this ResultSet.
+ERROR   2017-02-27 17:08:34,253 [Thread-0] models.dao.UserDao  - org.postgresql.util.PSQLException: The column name role was not found in this ResultSet.
+ERROR   2017-02-27 17:09:00,514 [Thread-2] common.utils.Log  - org.postgresql.util.PSQLException: The column name id was not found in this ResultSet.

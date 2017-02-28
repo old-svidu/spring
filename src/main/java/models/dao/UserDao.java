@@ -9,7 +9,6 @@ import models.pojo.User;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 
 /**
@@ -22,8 +21,10 @@ public class UserDao {
     private static final String SELECT_USER_JOIN_MONEY = "SELECT * FROM main.user mu "
             + "LEFT JOIN main.money mm ON mu.login = mm.login";
     private static final String SELECT_USER_BY_LOGIN_PWD = "SELECT * FROM main.user WHERE login=(?) AND pass=(?)";
-    private static final String INSERT_USER = "INSERT INTO main.user (name, lname ,login,pass, grp, email) values(?,?,?,?,?,?)";
+    private static final String INSERT_USER = "INSERT INTO main.user (login, pass, email, role) values(?,?,?,?)";
     private static final String SELECT_USER_BY_ID = "SELECT * FROM main.user WHERE (id) = (?)";
+    private static final String EMAILS_FOR_NOTIFICATION = "SELECT * FROM main.user WHERE role = 'admin' AND notify='true' AND id <> (?)";
+    private static final String CHANGE_NOTIFICATION = "UPDATE main.user SET notify=(?) WHERE id = (?)";
 
     public static boolean insert(User user) {
         try {
@@ -31,16 +32,15 @@ public class UserDao {
 
             PreparedStatement ps = conn.prepareStatement(INSERT_USER);
 
-            ps.setString(1, user.getName());
-            ps.setString(2, user.getLname());
-            ps.setString(3, user.getLogin());
-            ps.setString(4, user.getPass());
-            ps.setInt(5, user.getGroup());
-            ps.setString(6, user.getEmail());
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getPass());
+            ps.setString(3, user.getEmail());
+            ps.setString(4,user.getRole());
             int count = ps.executeUpdate();
             if (count > 0){
                 return true;
             }
+
         } catch (SQLException e) {
             logger.error(e);
         }
@@ -63,12 +63,10 @@ public class UserDao {
                     continue;
                 }
 
-                ps.setString(1, user.getName());
-                ps.setString(2, user.getLname());
-                ps.setString(3, user.getLogin());
-                ps.setString(4, user.getPass());
-                ps.setInt(5, user.getGroup());
-                ps.setString(6, user.getEmail());
+                ps.setString(1, user.getLogin());
+                ps.setString(2, user.getPass());
+                ps.setString(3, user.getEmail());
+                ps.setString(4, user.getRole());
                 ps.executeUpdate();
 
                 if (Sets.moneySet.contains(Money.moneyToStr(user.getMoney()))) {
@@ -92,19 +90,19 @@ public class UserDao {
             ResultSet rs = st.executeQuery(SELECT_USER_JOIN_MONEY);
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String lname = rs.getString("lname");
+
                 String login = rs.getString("login");
                 String pass = rs.getString("pass");
-                int group = rs.getInt("grp");
+                String email = rs.getString("email");
+                String role = rs.getString("role");
                 int mid = rs.getInt("mid");
-                Date date = rs.getDate("mdate");
                 int deposit = rs.getInt("deposit");
                 int balance = rs.getInt("balance");
+                String note = rs.getString("note");
 
 
-                Money money = new Money(mid, login, date, deposit, balance);
-                User user = new User(name, lname, group, login, pass, money);
+                Money money = new Money(mid, login, deposit, balance, note);
+                User user = new User(id, login, pass, email, role, money);
                 list.add(user);
             }
 
@@ -124,13 +122,12 @@ public class UserDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int uid = rs.getInt("id");
-                String name = rs.getString("name");
-                String lname = rs.getString("lname");
                 String login = rs.getString("login");
                 String pass = rs.getString("pass");
-                int group = rs.getInt("grp");
+                String email = rs.getString("email");
+                String role  = rs.getString("role");
 
-                return new User(name, lname, group, login, pass);
+                return new User(uid,login, pass, email, role);
             }
 
         } catch (SQLException e) {
@@ -160,13 +157,12 @@ public class UserDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String lname = rs.getString("lname");
                 String lgn = rs.getString("login");
                 String pwd = rs.getString("pass");
-                int grp = rs.getInt("grp");
+                String role = rs.getString("role");
                 String email = rs.getString("email");
-                return new User(id, name, lname, grp, lgn, pwd, email);
+
+                return new User(id, lgn, pwd, email, role);
             }
 
         } catch (SQLException e) {
@@ -184,18 +180,46 @@ public class UserDao {
             ResultSet rs = st.executeQuery(SELECT_ALL_USERS);
             while (rs.next()){
                 int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String lname = rs.getString("lname");
                 String lgn = rs.getString("login");
                 String pwd = rs.getString("pass");
-                int grp = rs.getInt("grp");
                 String email = rs.getString("email");
-                list.add( new User(id, name, lname, grp, lgn, pwd, email));
+                String role = rs.getString("role");
+
+                list.add( new User(id, lgn, pwd, email, role));
             }
         } catch (SQLException e) {
             logger.error(e);
         }
         return list;
+    }
+
+    public static List<String> selectEmailsForNotification(int id){
+        List<String> adminEmails = new ArrayList<>();
+        try {
+            Connection conn = Conn.getInstance();
+            PreparedStatement ps = conn.prepareStatement(EMAILS_FOR_NOTIFICATION);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                adminEmails.add(rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+        return adminEmails;
+    }
+
+    public static void notifyAdmin(String notify, int id){
+        try {
+            Connection conn = Conn.getInstance();
+            PreparedStatement ps = conn.prepareStatement(CHANGE_NOTIFICATION);
+            ps.setString(1,notify);
+            ps.setInt(2,id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            logger.error(e);
+        }
+
     }
 
 }

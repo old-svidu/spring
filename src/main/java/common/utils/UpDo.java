@@ -1,11 +1,15 @@
 package common.utils;
 
+import org.apache.log4j.Logger;
+
 import java.lang.reflect.Method;
 
 /**
  * Created by root on 20.02.17.
  */
 public class UpDo {
+    private static Logger logger = Logger.getLogger(UpDo.class);
+
     final static String[] TABLES = {"models.lists.Users", "models.lists.Things", "models.lists.Reports", "models.lists.Moneys"};
     final static String[] XMLS = {"models.lists.Users.xml","models.lists.Things.xml","models.lists.Reports.xml","models.lists.Moneys.xml"};
 
@@ -17,12 +21,12 @@ public class UpDo {
                     try {
                         System.out.println(Thread.currentThread().getName());
                         Class cl = Class.forName(table);
-                        Method m = cl.getMethod("selectAllReports");
+                        Method m = cl.getMethod("selectAll");
                         Object o = cl.newInstance();
                         m.invoke(o);
                         DataManager.serialize(o);
                     } catch (Exception e) {
-                        Log.logger.error(e);
+                        logger.error(e);
                     }
                 }
             }).start();
@@ -41,7 +45,7 @@ public class UpDo {
                         Object obj = cl.newInstance();
                         m.invoke(obj);
                     } catch (Exception e) {
-                        Log.logger.error(e);
+                        logger.error(e);
                     }
                 }
             }).start();

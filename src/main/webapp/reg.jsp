@@ -15,14 +15,6 @@
 
 <form action="reg" method="post">
     <div>
-        <input type="text" name="name" placeholder="name" required/>
-    </div>
-
-    <div>
-        <input type="text" name="lastName" placeholder="last name" required/>
-    </div>
-
-    <div>
         <input type="text" name="login" placeholder="login" required/>
     </div>
 

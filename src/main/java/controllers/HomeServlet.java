@@ -21,9 +21,13 @@ import java.util.List;
  * Created by root on 25.02.17.
  */
 public class HomeServlet extends HttpServlet {
+
+    public static boolean flag = true;
+
     private static Logger logger = Logger.getLogger(HomeServlet.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        flag=!flag;
         logger.trace("here homeServlet");
         Object obj = req.getSession().getAttribute("id");
         if (obj !=null){

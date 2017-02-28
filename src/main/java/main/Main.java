@@ -2,6 +2,7 @@ package main;
 
 
 import common.utils.UpDo;
+import models.dao.UserDao;
 
 
 /**
@@ -12,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 //        UserDao.deleteAll();
 //        UpDo.upload();
-        UpDo.download();
+//        UpDo.download();
     }
 }
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <uid>1</uid>
+        <login>jk</login>
+        <pass>jk</pass>
+        <role>user</role>
+        <money>
+            <mid>1</mid>
+            <login>jk</login>
+            <deposit>100</deposit>
+            <balance>0</balance>
+            <note>$</note>
+        </money>
+        <email>test@mail.ru</email>
+    </user>
+    <user>
+        <uid>2</uid>
+        <login>jk1</login>
+        <pass>jk1</pass>
+        <role>user</role>
+        <money>
+            <mid>2</mid>
+            <login>jk1</login>
+            <deposit>100</deposit>
+            <balance>0</balance>
+            <note>$</note>
+        </money>
+        <email>t@mail.ru</email>
+    </user>
+    <user>
+        <uid>2</uid>
+        <login>jk1</login>
+        <pass>jk1</pass>
+        <role>user</role>
+        <money>
+            <mid>3</mid>
+            <login>jk1</login>
+            <deposit>200</deposit>
+            <balance>0</balance>
+            <note>$</note>
+        </money>
+        <email>t@mail.ru</email>
+    </user>
+</users>

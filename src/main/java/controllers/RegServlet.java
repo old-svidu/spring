@@ -24,12 +24,10 @@ public class RegServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String lname = req.getParameter("lastName");
         String login = req.getParameter("login");
         String pass = req.getParameter("pass");
         String email = req.getParameter("email");
-        User user = new User(name, lname, 1, login, pass, email);
+        User user = new User(login, pass, email, "user");
         if (UserService.registration(user)) {
             logger.trace("true");
             resp.sendRedirect("/login");

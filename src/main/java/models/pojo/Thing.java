@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by root on 18.02.17.
  */
-@XmlType(propOrder = {"tid","login","thing","price","tdate","prior"})
+@XmlType(propOrder = {"tid","login","thing","price","prior"})
 @XmlRootElement
 public class Thing implements Serializable {
 
@@ -17,27 +17,24 @@ public class Thing implements Serializable {
     private String login;
     private String thing;
     private int price;
-    private Date tdate;
     private int prior;
 
 
     public Thing() {
     }
 
-    public Thing(String login, String thing, int tprice, Date tdate, int prior) {
+    public Thing(String login, String thing, int price, int prior) {
         this.login = login;
         this.thing = thing;
-        this.price = tprice;
-        this.tdate = tdate;
+        this.price = price;
         this.prior = prior;
     }
 
-    public Thing(int tid, String login, String thing, int cost, Date tdate, int prior) {
+    public Thing(int tid, String login, String thing, int price,int prior) {
         this.tid = tid;
         this.login = login;
         this.thing = thing;
-        this.price = cost;
-        this.tdate = tdate;
+        this.price = price;
         this.prior = prior;
     }
 
@@ -77,16 +74,7 @@ public class Thing implements Serializable {
         this.price = price;
     }
 
-    public Date getTdate() {
-        return tdate;
-    }
-
-    @XmlElement
-    public void setTdate(Date tdate) {
-        this.tdate = tdate;
-    }
-
-    public int getPrior() {
+   public int getPrior() {
         return prior;
     }
 

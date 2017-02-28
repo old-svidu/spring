@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reports>
+    <report>
+        <rid>1</rid>
+        <login>jk</login>
+        <thing>car</thing>
+        <status>waiting</status>
+    </report>
+    <report>
+        <rid>2</rid>
+        <login>jk1</login>
+        <thing>fly</thing>
+        <status>waiting</status>
+    </report>
+    <report>
+        <rid>3</rid>
+        <login>jk</login>
+        <thing>shop</thing>
+        <status>waiting</status>
+    </report>
+</reports>

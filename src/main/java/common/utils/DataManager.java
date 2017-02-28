@@ -1,5 +1,7 @@
 package common.utils;
 
+import org.apache.log4j.Logger;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -10,6 +12,7 @@ import java.io.File;
  * Created by root on 18.02.17.
  */
 public class DataManager {
+    private static Logger logger = Logger.getLogger(DataManager.class);
 
     public static void serialize(Object obj) {
         try {
@@ -21,7 +24,7 @@ public class DataManager {
             jaxbMarshaller.marshal(obj, file);
 
         } catch (JAXBException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
     }
 
@@ -38,7 +41,7 @@ public class DataManager {
 
             return obj;
         } catch (JAXBException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
         return null;
     }
@@ -49,7 +52,7 @@ public class DataManager {
             Class cl = Class.forName(className);
             return cl;
         } catch (ClassNotFoundException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
         return null;
     }

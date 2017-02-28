@@ -15,8 +15,8 @@ import java.io.IOException;
 /**
  * Created by root on 24.02.17.
  */
-public class LoginServlet extends HttpServlet {
-    private static Logger logger = Logger.getLogger(LoginServlet.class);
+public class LogInServlet extends HttpServlet {
+    private static Logger logger = Logger.getLogger(LogInServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
             if (user.getUid()!=0) {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("id",user.getUid());
-//                req.getRequestDispatcher("/home.jsp").forward(req,resp);
                 resp.sendRedirect("/home");
             } else {
                 logger.trace("noauth");

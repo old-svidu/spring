@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by root on 18.02.17.
  */
-@XmlType(propOrder = {"rid","login","thing","status","avg"})
+@XmlType(propOrder = {"rid","login","thing","status"})
 @XmlRootElement
 public class Report implements Serializable {
 
@@ -16,24 +16,24 @@ public class Report implements Serializable {
     private String login;
     private String thing;
     private String status;
-    private int avg;
+
 
     public Report() {
     }
 
-    public Report(String login, String thing, String status, int avg) {
+    public Report(String login, String thing, String status) {
         this.login = login;
         this.thing = thing;
         this.status = status;
-        this.avg = avg;
+
     }
 
-    public Report(int rid, String login, String thing, String status, int avg) {
+    public Report(int rid, String login, String thing, String status) {
         this.rid = rid;
         this.login = login;
         this.thing = thing;
         this.status = status;
-        this.avg = avg;
+
     }
 
     public int getRid() {
@@ -72,12 +72,5 @@ public class Report implements Serializable {
         this.thing = thing;
     }
 
-    public int getAvg() {
-        return avg;
-    }
 
-    @XmlElement
-    public void setAvg(int avg) {
-        this.avg = avg;
-    }
 }

@@ -1,5 +1,11 @@
 package common.utils;
 
+import org.apache.log4j.Logger;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,33 +14,35 @@ import java.sql.SQLException;
  * Created by root on 19.02.17.
  */
 public class Conn {
+    private static Logger logger = Logger.getLogger(Conn.class);
 
-
-    public static final String URL = "jdbc:postgresql://127.0.0.1:5432/PurchaseProj";
-    public static final String USER = "postgres";
-    public static final String PASSWORD = "123456";
-
-    private static Connection instance;
-
-    private Conn() {
-
+    static Connection conn;
+    static {
         try {
-            instance = DriverManager.getConnection(URL, USER, PASSWORD);
+            Context context = new InitialContext();
+            DataSource ds = (DataSource) context.lookup("java:comp/env/jdbc/ISPP");
+            conn = ds.getConnection();
+        } catch (NamingException e) {
+            logger.error(e);
         } catch (SQLException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
     }
 
-    public static Connection getInstance() {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            Log.logger.error(e);
+    public static Connection getInstance(){
+        return conn;
+    }
+
+    public static void closeConn(Connection conn){
+        if (conn!=null){
+            try {
+                conn.close();
+                conn = null;
+            } catch (SQLException e) {
+                logger.error(e);
+            }
         }
-        if (instance == null) {
-            new Conn();
-        }
-        return instance;
+
     }
 }
 

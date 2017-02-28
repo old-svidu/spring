@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<things>
+    <thing>
+        <tid>1</tid>
+        <login>jk</login>
+        <thing>car</thing>
+        <price>100</price>
+        <prior>1</prior>
+    </thing>
+    <thing>
+        <tid>2</tid>
+        <login>jk1</login>
+        <thing>fly</thing>
+        <price>200</price>
+        <prior>1</prior>
+    </thing>
+    <thing>
+        <tid>3</tid>
+        <login>jk</login>
+        <thing>shop</thing>
+        <price>300</price>
+        <prior>1</prior>
+    </thing>
+</things>

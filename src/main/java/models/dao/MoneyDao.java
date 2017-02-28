@@ -5,7 +5,7 @@ import models.lists.Moneys;
 import common.utils.Conn;
 import main.Sets;
 import models.pojo.Money;
-import common.utils.Log;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,8 +15,10 @@ import java.util.List;
  * Created by root on 18.02.17.
  */
 public class MoneyDao {
+    private static Logger logger = Logger.getLogger(MoneyDao.class);
 
     private static final String SELECT_ALL_MONEY = "SELECT * FROM main.money";
+    private static final String INSERT_MONEY = "INSERT INTO main.money (login,deposit,balance, note) VALUES(?,?,?,?)";
 
     public static List<Money> selectAllMoney() {
         List<Money> list = new ArrayList<>();
@@ -27,15 +29,15 @@ public class MoneyDao {
             while (rs.next()) {
                 int mid = rs.getInt("mid");
                 String login = rs.getString("login");
-                Date date = rs.getDate("mdate");
-                int salary = rs.getInt("deposit");
+                int deposit = rs.getInt("deposit");
                 int balance = rs.getInt("balance");
-                Money money = new Money(mid, login, date, salary, balance);
+                String note = rs.getString("note");
+                Money money = new Money(mid, login, deposit, balance, note);
                 list.add(money);
             }
 
         } catch (SQLException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
         return list;
     }
@@ -45,8 +47,8 @@ public class MoneyDao {
         try {
 
             Connection conn = Conn.getInstance();
-            String sql = "INSERT INTO main.money (login,mdate,deposit,balance) VALUES(?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
+
+            PreparedStatement ps = conn.prepareStatement(INSERT_MONEY);
 
             for (Money money : moneys.getList()) {
                 synchronized (Sets.loginsSet) {
@@ -58,9 +60,9 @@ public class MoneyDao {
                     Sets.moneySet.add(Money.moneyToStr(money));
 
                     ps.setString(1, money.getLogin());
-                    ps.setDate(2, new Date(money.getDate().getTime()));
-                    ps.setInt(3, money.getDeposit());
-                    ps.setInt(4, money.getBalance());
+                    ps.setInt(2, money.getDeposit());
+                    ps.setInt(3, money.getBalance());
+                    ps.setString(4,money.getNote());
                     ps.executeUpdate();
 
 
@@ -68,7 +70,7 @@ public class MoneyDao {
             }
 
         } catch (SQLException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
     }
 
@@ -79,18 +81,17 @@ public class MoneyDao {
                 Sets.moneySet.add(Money.moneyToStr(money));
 
                 Connection conn = Conn.getInstance();
-                String sql = "INSERT INTO main.money (login,mdate,deposit,balance) VALUES(?,?,?,?)";
-                PreparedStatement ps = conn.prepareStatement(sql);
+                PreparedStatement ps = conn.prepareStatement(INSERT_MONEY);
                 ps.setString(1, money.getLogin());
-                ps.setDate(2, new Date(money.getDate().getTime()));
-                ps.setInt(3, money.getDeposit());
-                ps.setInt(4, money.getBalance());
+                ps.setInt(2, money.getDeposit());
+                ps.setInt(3, money.getBalance());
+                ps.setString(4, money.getNote());
                 ps.executeUpdate();
 
             }
 
         } catch (SQLException e) {
-            Log.logger.error(e);
+            logger.error(e);
         }
     }
 

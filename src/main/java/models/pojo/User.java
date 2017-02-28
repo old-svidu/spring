@@ -11,14 +11,12 @@ import java.io.Serializable;
  * Created by root on 18.02.17.
  */
 
-@XmlType(propOrder = {"uid","name","lname","login","pass","group","money","email"})
+@XmlType(propOrder = {"uid","login","pass", "role","money","email","notify"})
 @XmlRootElement(name = "user")
 public class User implements Serializable {
 
     private int uid;
-    private String name;
-    private String lname;
-    private int group;
+    private String role;
     private String login;
     private String pass;
     private String email;
@@ -29,56 +27,39 @@ public class User implements Serializable {
     }
 
 
-    public User(String name, String lname, int group, String login, String pass) {
-        this.name = name;
-        this.lname = lname;
-        this.group = group;
+    public User(String login, String pass, String role) {
+        this.role = role;
         this.login = login;
         this.pass = pass;
     }
 
-    public User(int uid, String name, String lname, int group, String login, String pass) {
+    public User(int uid, String login, String pass, String role) {
         this.uid = uid;
-        this.name = name;
-        this.lname = lname;
-        this.group = group;
+        this.role = role;
         this.login = login;
         this.pass = pass;
     }
 
-    public User(String name, String lname, int group, String login, String pass, Money money) {
-        this.name = name;
-        this.lname = lname;
-        this.group = group;
-        this.login = login;
-        this.pass = pass;
-        this.money = money;
-    }
-
-    public User(int uid, String name, String lname, int group, String login, String pass, Money money) {
+    public User(int uid,String login, String pass, String email, String role) {
         this.uid = uid;
-        this.name = name;
-        this.lname = lname;
-        this.group = group;
-        this.login = login;
-        this.pass = pass;
-        this.money = money;
-    }
-
-    public User(int uid, String name, String lname, int group, String login, String pass, String email) {
-        this.uid = uid;
-        this.name = name;
-        this.lname = lname;
-        this.group = group;
+        this.role = role;
         this.login = login;
         this.pass = pass;
         this.email = email;
+
     }
 
-    public User(String name, String lname, int group, String login, String pass, String email) {
-        this.name = name;
-        this.lname = lname;
-        this.group = group;
+    public User(int uid,String login, String pass, String email, String role, Money money) {
+        this.uid = uid;
+        this.role = role;
+        this.login = login;
+        this.pass = pass;
+        this.email = email;
+        this.money = money;
+    }
+
+    public User(String login, String pass, String email, String role) {
+        this.role = role;
         this.login = login;
         this.pass = pass;
         this.email = email;
@@ -94,31 +75,13 @@ public class User implements Serializable {
         this.uid = uid;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
     @XmlElement
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    @XmlElement
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public int getGroup() {
-        return group;
-    }
-
-    @XmlElement
-    public void setGroup(int group) {
-        this.group = group;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getLogin() {
@@ -161,6 +124,7 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
 }
 
