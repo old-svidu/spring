@@ -13,22 +13,44 @@
 <body>
 <h1>Hello there</h1>
 
-<form action="reg" method="post">
+<form action="reg"  name="regForm" method="post">
     <div>
-        <input type="text" name="login" placeholder="login" required/>
+        <input type="text" name="login" id="login" placeholder="login" required/>
     </div>
 
     <div>
-        <input type="text" name="email" placeholder="email" required/>
+        <input type="text" name="email" id="email" placeholder="email" required/>
     </div>
 
     <div>
-        <input type="password" name="pass" placeholder="password" required/>
+        <input type="password" name="pass" id="pass" placeholder="password" required/>
     </div>
 
     <div>
         <input type="submit" value="Регистрация">
     </div>
 </form>
+
+<%--<script type="text/javascript">--%>
+    <%--function validate() {--%>
+        <%--valid = true;--%>
+        <%--var login = document.regForm.login;--%>
+        <%--var pass = document.regForm.login;--%>
+        <%--var email = document.regForm.login;--%>
+        <%--if (login.value == "" || login.value == " ") {--%>
+            <%--alert("Пожалуйста заполните поле 'Login'.");--%>
+            <%--valid = false;--%>
+        <%--}--%>
+        <%--if (pass.value == "" || pass.value == " ") {--%>
+            <%--alert("Пожалуйста заполните поле 'Pass'.");--%>
+            <%--valid = false;--%>
+        <%--}--%>
+        <%--if (email.value == "" || email.value == " ") {--%>
+            <%--alert("Пожалуйста заполните поле 'Email'.");--%>
+            <%--valid = false;--%>
+        <%--}--%>
+        <%--return valid;--%>
+    <%--}--%>
+<%--</script>--%>
 </body>
 </html>

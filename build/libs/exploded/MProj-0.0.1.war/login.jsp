@@ -7,13 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>Login</head>
-<body>
 
+<body>
+<%
+    if (session.getAttribute("id") != null) {
+        response.sendRedirect("/home");
+    }
+%>
 
 <div>
     <a href="/reg">Регистрация</a>
-    <form action="/login" method="post">
+    <form action="/login"  method="post">
         <label for="login">Login:</label>
         <input type="text" name="login" id="login" value="" placeholder="логин">
         <label for="password">Password:</label>
@@ -23,4 +27,5 @@
     </form>
 </div>
 </body>
+
 </html>

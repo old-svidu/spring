@@ -1,5 +1,5 @@
-<%@ page import="models.dao.UserDao" %>
-<%@ page import="controllers.HomeServlet" %><%--
+
+<%@ page import="spring.common.utils.Flags" %><%--
   Created by IntelliJ IDEA.
   User: root
   Date: 24.02.17
@@ -13,52 +13,25 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Authrized!</h1>
+
 
 <%
     if (session.getAttribute("id") == null) {
         response.sendRedirect("/login");
-    }%>
+    }
+%>
+<div class="topMenu">
+    <form action="/logout" method="post">
+        <input type="submit" value="Log Out" formmethod="post">
+    </form>
+    <form action="/home" method="get" >
+        <input type="submit" value="<%=Flags.flag?"Off":"On"%>" onclick="Flags.changeFlag()">
+    </form>
+</div>
+<div class="menu">
 
 
-<table border="1" width="100%">
-    <tr>
-        <td>id</td>
-        <td>login</td>
-        <td>pass</td>
-        <td>email</td>
-        <td>role</td>
 
-    </tr>
-    <c:forEach items="${users}" var="user">
-        <tr>
-            <td><c:out value="${user.uid}"/></td>
-            <td><c:out value="${user.login}"/></td>
-            <td><c:out value="${user.pass}"/></td>
-            <td><c:out value="${user.email}"/></td>
-            <td><c:out value="${user.role}"/></td>
-        </tr>
-    </c:forEach>
-</table>
-
-<table border="1" width="100%">
-    <tr>
-        <td>id</td>
-        <td>login</td>
-        <td>thing</td>
-        <td>price</td>
-        <td>prioritet</td>
-    </tr>
-    <c:forEach items="${things}" var="thing">
-        <tr>
-            <td><c:out value="${thing.tid}"/></td>
-            <td><c:out value="${thing.login}"/></td>
-            <td><c:out value="${thing.thing}"/></td>
-            <td><c:out value="${thing.price}"/></td>
-            <td><c:out value="${thing.prior}"/></td>
-        </tr>
-    </c:forEach>
-</table>
 
 <table border="1" width="100%">
     <tr>
@@ -81,31 +54,62 @@
 </table>
 
 
-<table border="1" width="100%">
-    <tr>
-        <td>id</td>
-        <td>login</td>
-        <td>thing</td>
-        <td>status</td>
+<%--<table border="1" width="100%">--%>
+    <%--<tr>--%>
+        <%--<td>id</td>--%>
+        <%--<td>login</td>--%>
+        <%--<td>thing</td>--%>
+        <%--<td>status</td>--%>
 
-    </tr>
-    <c:forEach items="${reports}" var="report">
-        <tr>
-            <td><c:out value="${report.rid}"/></td>
-            <td><c:out value="${report.login}"/></td>
-            <td><c:out value="${report.thing}"/></td>
-            <td><c:out value="${report.status}"/></td>
-        </tr>
-    </c:forEach>
-</table>
+    <%--</tr>--%>
+    <%--<c:forEach items="${reports}" var="report">--%>
+        <%--<tr>--%>
+            <%--<td><c:out value="${report.rid}"/></td>--%>
+            <%--<td><c:out value="${report.login}"/></td>--%>
+            <%--<td><c:out value="${report.thing}"/></td>--%>
+            <%--<td><c:out value="${report.status}"/></td>--%>
+        <%--</tr>--%>
+    <%--</c:forEach>--%>
+<%--</table>--%>
+</div>
 
-<form action="/logout" method="post">
-    <input type="submit" value="Log Out" formmethod="post">
-</form>
 
-<form action="/home" method="get" >
-<input type="submit" value="<%=HomeServlet.flag?"Off":"On"%>" formmethod="get">
-</form>
+
+
+<style>
+
+    .topMenu {
+        padding:10px;
+        color:#fff;
+        font-weight:bold;
+        position:fixed;
+        top:0;
+        left:50px; right:50px;
+        text-align:right;
+
+
+        -moz-opacity: 0.50;
+        opacity: 0.50;
+
+
+        -webkit-transition:All 1s ease;
+        -moz-transition:All 1s ease;
+        -o-transition:All 1s ease;
+
+    }
+
+    .menu {
+        position: absolute;
+    }
+</style>
+
+<%--<script>--%>
+    <%--function changeFlag() {--%>
+        <%--<% Flags.flag=!Flags.flag; %>--%>
+    <%--}--%>
+<%--</script>--%>
+
+
 
 </body>
 </html>

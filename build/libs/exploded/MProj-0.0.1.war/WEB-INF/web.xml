@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <welcome-file-list>
-        <welcome-file>/welcome.jsp</welcome-file>
+        <welcome-file>/login.jsp</welcome-file>
     </welcome-file-list>
 
 
     <servlet>
         <servlet-name>Reg</servlet-name>
-        <servlet-class>controllers.RegServlet</servlet-class>
+        <servlet-class>spring.controllers.servlets.RegServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Reg</servlet-name>
@@ -19,7 +19,7 @@
 
     <servlet>
         <servlet-name>Index</servlet-name>
-        <servlet-class>controllers.IndexServlet</servlet-class>
+        <servlet-class>spring.controllers.servlets.IndexServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
@@ -28,7 +28,7 @@
 
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>controllers.LogInServlet</servlet-class>
+        <servlet-class>spring.controllers.servlets.LogInServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -37,7 +37,7 @@
     
     <servlet>
         <servlet-name>Home</servlet-name>
-        <servlet-class>controllers.HomeServlet</servlet-class>
+        <servlet-class>spring.controllers.servlets.HomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -46,18 +46,75 @@
 
     <servlet>
         <servlet-name>LogOut</servlet-name>
-        <servlet-class>controllers.LogOutServlet</servlet-class>
+        <servlet-class>spring.controllers.servlets.LogOutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogOut</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>spring.controllers.servlets.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Edit</servlet-name>
+        <servlet-class>spring.controllers.servlets.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>spring.controllers.servlets.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUser</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditThing</servlet-name>
+        <servlet-class>spring.controllers.servlets.EditThingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditThing</servlet-name>
+        <url-pattern>/editthing</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteThing</servlet-name>
+        <servlet-class>spring.controllers.servlets.DeleteThingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteThing</servlet-name>
+        <url-pattern>/delthing</url-pattern>
+    </servlet-mapping>
+
 
 
 
     <listener>
-        <listener-class>controllers.listeners.SessionListner</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            beans.xml
+        </param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>spring.controllers.listeners.SessionListner</listener-class>
+    </listener>
+
     
     <resource-ref>
         <description>Connection Pull</description>
